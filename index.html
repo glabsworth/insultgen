@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>InsultGen</title>
+        <meta charset="UTF-8">
+		<link rel="icon" href="favicon.ico">
+        <style>
+            body {
+                position: absolute;
+                background-color: black;
+                padding: 0;
+                margin: 0;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                font-family: Georgia, serif;
+            }
+
+            #insult {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: gray;
+                font-size: 40px;
+                cursor: pointer;
+            }
+
+            #insult:hover w {
+                text-shadow: 0 0 10px white;
+            }
+
+            w {
+                color: white;
+            }
+
+            #watermark {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: 35px;
+                text-align: center;
+                color: gray;
+            }
+
+            a {
+                color: gray;
+            }
+
+            a:hover {
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="insult" onclick="generate()"></div>
+        <div id="watermark">Made with love by <a href="https://glabsworth.github.io" target="_blank">glabsworth</a>, 2024</div>
+        <script>
+            const insult = document.getElementById("insult");
+            const phrases = ["Shut up, you ", "Go away, you ", "You're such a ", "You're a lousy "];
+            const prefixes = ["di", "wa", "pu", "tu", "fa", "bo", "wee", "bi", "bra"];
+            const suffixes = ["ll", "d", "lp", "rd", "ce", "t", "rt", "m", "p"];
+
+            function choose(arr) {
+	            return arr[Math.floor(Math.random() * (arr.length))];
+            }
+
+            function generate() {
+                insult.innerHTML = choose(phrases) + "<w>" + choose(prefixes) + choose(suffixes) + choose(prefixes) + choose(suffixes) + "</w>!";
+            }
+            generate();
+        </script>
+    </body>
+</html>
